@@ -1,17 +1,12 @@
-package com.example.liangminglin.mytab;
+package com.example.liangminglin.menu2;
 
-import android.app.AlertDialog;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.content.Intent;
-import android.widget.TextView;
-import android.app.AlertDialog.Builder;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.*;
 
-import org.w3c.dom.Text;
 
 public class orderSummary extends AppCompatActivity {
 
@@ -21,6 +16,9 @@ public class orderSummary extends AppCompatActivity {
     //create a text object
     TextView orders;
 
+    //create a button
+    Button go;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +27,10 @@ public class orderSummary extends AppCompatActivity {
         //point to the database
         db = new DBManager(this);
 
-        //point to the textbox
+        //point to the object
         orders = (TextView) findViewById(R.id.name_O);
+        go = (Button) findViewById(R.id.Pay);
+
 
 
 
@@ -48,5 +48,17 @@ public class orderSummary extends AppCompatActivity {
         }while(res.moveToNext());
 
         orders.setText(buff);
+        goTo();
     }
+
+    public void goTo()
+    {
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(orderSummary.this, Payment.class));
+            }
+        });
+    }
+
 }

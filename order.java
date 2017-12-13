@@ -1,6 +1,4 @@
-package com.example.liangminglin.mytab;
-
-import java.util.Vector;
+package com.example.liangminglin.menu2;
 
 /**
  * Created by liangminglin on 12/10/17.
